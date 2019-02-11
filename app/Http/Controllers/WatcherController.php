@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use function Stringy\create as s;
+use App\Address as Address;
 
 class WatcherController extends Controller
 {
@@ -28,10 +29,17 @@ class WatcherController extends Controller
         $html = $this->getHtmlFromRouter();
         $this->parseParamsFromHtml($html);
         $this->parseAddessesFromHtml($html);
+        foreach ($this->hosts as $host) {
+            $address = Address::find(str_replace('"', '', $host['address']));
+            if ($address) {
+                echo $address->address . " &mdash; " . $address->name . "<br>";
+            } else {
+                echo $host['address'] . "<br>";
+            }
+        }
         echo '<pre>';
         var_dump($this->hosts);
         echo '</pre>';
-        return 'Hello world';
     }
 
     private function getHtmlFromRouter()
