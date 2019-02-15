@@ -13,7 +13,11 @@
 */
 
 $router->get('/', function () use ($router) {
-    return $router->app->version();
+    return file_get_contents(resource_path('index.html'));
 });
 
-$router->get('/watcher', 'WatcherController@getStat');
+$router->group(['prefix' => 'api'], function () use ($router) {
+    $router->get('watcher', 'WatcherController@getStat');
+
+    $router->get('address', 'AddressController@list');
+});

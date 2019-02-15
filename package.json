@@ -6,6 +6,7 @@
   "author": "John Syomochkin <info@syomochkin.xyz>",
   "license": "MIT",
   "scripts": {
+    "build": "webpack",
     "watch": "webpack-dev-server --mode development"
   },
   "devDependencies": {

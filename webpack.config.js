@@ -3,10 +3,10 @@ const webpack = require('webpack');
 
 module.exports = {
     mode: 'production',
-    entry: './frontend/index.js',
+    entry: './resources/app/index.js',
     output: {
         path: path.resolve(__dirname, 'public'),
-        filename: 'bundle.js'
+        filename: 'dist/bundle.js'
     },
     stats: {
         children: false
@@ -21,10 +21,13 @@ module.exports = {
         ]
     },
     devServer: {
-        contentBase: '.',
-        // proxy: {
-        //     '/': 'http://tplink.local/'
-        // },
+        contentBase: './resources',
+        proxy: {
+            '/api': {
+                target: 'http://localhost:3000',
+                changeOrigin: true
+            }
+        },
         hot: true
     },
     plugins: [
