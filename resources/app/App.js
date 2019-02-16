@@ -5,11 +5,11 @@ import NotFoundPage from './components/notFoundPage/NotFoundPage'
 
 
 const App  = () =>
-    <div className="App" >
-        <div className="App--SideMenu">
+    <div className="App p-grid" >
+        <div className="App--SideMenu p-col-fixed">
             <NavMenu />
         </div>
-        <div className="App--Content">
+        <div className="App--Content p-col">
             <Switch>
                 <Route path='/'
                        exact

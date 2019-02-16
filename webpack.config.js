@@ -1,5 +1,6 @@
 const path = require('path');
-const webpack = require('webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 
 module.exports = {
     mode: 'production',
@@ -17,6 +18,14 @@ module.exports = {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: 'babel-loader'
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'sass-loader'
+                ]
             }
         ]
     },
@@ -28,10 +37,11 @@ module.exports = {
                 changeOrigin: true
             }
         },
-        port: 5000,
-        hot: true
+        port: 5000
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin()
+        new MiniCssExtractPlugin({
+            filename: 'dist/style.css'
+        })
     ]
 };
