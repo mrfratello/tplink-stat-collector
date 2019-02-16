@@ -1,29 +1,24 @@
-import {Component} from 'react'
+import {Switch, Route} from 'react-router-dom'
+import NavMenu from './components/navMenu/NavMenu'
+import AddressList from './components/address/list/List'
+import NotFoundPage from './components/notFoundPage/NotFoundPage'
 
-export default class App extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            isLoaded: false
-        }
-        this.changeData = this.changeData.bind(this)
-        setTimeout(() => this.changeData(), 1000)
-    }
 
-    changeData() {
-        this.setState({
-            isLoaded: true
-        })
-    }
+const App  = () =>
+    <div className="App" >
+        <div className="App--SideMenu">
+            <NavMenu />
+        </div>
+        <div className="App--Content">
+            <Switch>
+                <Route path='/'
+                       exact
+                       render={() =>
+                           <AddressList addresses={[{"address":"11:22:33:44:55:66", "name":"My computer"}]} />
+                       } />
+                <Route component={NotFoundPage} />
+            </Switch>
+        </div>
+    </div>
 
-    render() {
-        const {isLoaded} = this.state
-        return (
-            <div className="App" >
-                { isLoaded
-                    ? <strong>Данные загружены</strong>
-                    : <em>Загрузка данных</em> }
-            </div>
-        )
-    }
-}
+export default App
