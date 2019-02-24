@@ -1,21 +1,11 @@
-import AddressItem from '../item/Item'
+import {DataTable} from 'primereact/datatable'
+import {Column} from 'primereact/column';
 
 
-const AddressList = ({addresses=[]}) =>
+export const AddressList = ({addresses=[]}) =>
     <div className="AddressList">
-        <table>
-            <thead>
-                <tr>
-                    <th>№</th>
-                    <th>Name</th>
-                    <th>MAC address</th>
-                </tr>
-            </thead>
-            <tbody>
-                { addresses.map((address, i) => <AddressItem key={i} address={address} index={i + 1} />) }
-            </tbody>
-        </table>
+        <DataTable value={addresses}>
+            <Column field="name" header="Name" />
+            <Column field="address" header="MAC address" />
+        </DataTable>
     </div>
-
-
-export default AddressList

@@ -1,8 +1,10 @@
 import {Switch, Route} from 'react-router-dom'
 import NavMenu from './components/navMenu/NavMenu'
-import AddressList from './components/address/list/List'
+import {AddressList} from './components/address/list/List'
 import NotFoundPage from './components/notFoundPage/NotFoundPage'
 
+import 'primereact/resources/primereact.min.css'
+import 'primereact/resources/themes/nova-colored/theme.css'
 
 const App  = () =>
     <div className="App p-grid" >

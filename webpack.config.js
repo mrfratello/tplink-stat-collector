@@ -20,12 +20,30 @@ module.exports = {
                 use: 'babel-loader'
             },
             {
-                test: /\.scss$/,
+                test: /\.(sc|c)ss$/,
                 use: [
                     MiniCssExtractPlugin.loader,
                     'css-loader',
                     'sass-loader'
                 ]
+            },
+            {
+                test: /\.(png|jpg|gif)$/,
+                use: [{
+                    loader: 'file-loader',
+                    options: {
+                        outputPath: 'dist/images'
+                    }
+                }]
+            },
+            {
+                test: /\.(woff(2)?|ttf|eot|svg)$/,
+                use: [{
+                  loader: 'file-loader',
+                  options: {
+                    outputPath: 'dist/fonts'
+                  }
+                }]
             }
         ]
     },
