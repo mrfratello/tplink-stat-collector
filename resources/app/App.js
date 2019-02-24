@@ -1,6 +1,6 @@
 import {Switch, Route} from 'react-router-dom'
 import NavMenu from './components/navMenu/NavMenu'
-import {AddressList} from './components/address/list/List'
+import {AddressList} from './components/addressList/AddressList'
 import NotFoundPage from './components/notFoundPage/NotFoundPage'
 
 import 'primereact/resources/primereact.min.css'
